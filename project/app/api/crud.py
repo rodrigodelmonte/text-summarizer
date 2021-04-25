@@ -1,4 +1,5 @@
-from typing import Union, List
+from typing import List, Union
+
 from app.models.pydantic import SummaryPayloadSchema
 from app.models.tortoise import TextSummary
 
