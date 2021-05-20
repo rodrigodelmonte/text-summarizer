@@ -5,3 +5,6 @@ newspaper3k==0.2.8
 requests==2.25.1
 tortoise-orm==0.16.21
 uvicorn==0.13.4
+python-multipart==0.0.5
+python-jose[cryptography]==3.2.0
+passlib[bcrypt]==1.7.4
