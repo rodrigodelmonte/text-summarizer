@@ -24,6 +24,9 @@ lint:
 	docker-compose exec web black .
 	docker-compose exec web flake8 .
 
+security-check:
+	docker-compose exec web bandit -r app/
+
 clean:
 	docker-compose stop
 	docker-compose rm -f

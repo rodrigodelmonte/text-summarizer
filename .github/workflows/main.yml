@@ -78,7 +78,7 @@ jobs:
             -p 5003:8765 \
             ${{ env.IMAGE }}-final:latest
       - name: Install requirements
-        run: docker exec fastapi-tdd pip install black==20.8b1 flake8===3.8.4 isort==5.7.0 pytest==6.2.2
+        run: docker exec fastapi-tdd pip install black==20.8b1 flake8===3.8.4 isort==5.7.0 pytest==6.2.2 bandit==1.7.0 --no-warn-script-location
       - name: Pytest
         run: docker exec fastapi-tdd python -m pytest .
       - name: Flake8
@@ -87,6 +87,8 @@ jobs:
         run: docker exec fastapi-tdd python -m black . --check
       - name: isort
         run: docker exec fastapi-tdd python -m isort . --check-only
+      - name: bandit
+        run: docker exec fastapi-tdd python -m bandit -r app/
 
   deploy:
     name: Deploy to Heroku

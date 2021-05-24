@@ -26,3 +26,8 @@ repos:
     rev: 3.7.9
     hooks:
       - id: flake8
+  - repo: https://github.com/PyCQA/bandit
+    rev: "1.7.0" # Update me!
+    hooks:
+      - id: bandit
+        exclude: ^src/tests/
