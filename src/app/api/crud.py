@@ -1,7 +1,11 @@
 from typing import List, Union
 
-from app.models.pydantic import SummaryPayloadSchema
 from app.models.tortoise import TextSummary
+
+from app.models.pydantic import (  # isort:skip
+    SummaryPayloadSchema,
+    SummaryUpdatePayloadSchema,
+)
 
 
 async def post(payload: SummaryPayloadSchema) -> int:
@@ -27,7 +31,7 @@ async def delete(id: int) -> int:
     return summary
 
 
-async def put(id: int, payload: SummaryPayloadSchema) -> Union[dict, None]:
+async def put(id: int, payload: SummaryUpdatePayloadSchema) -> Union[dict, None]:
     summary = await TextSummary.filter(id=id).update(
         url=payload.url, summary=payload.summary
     )

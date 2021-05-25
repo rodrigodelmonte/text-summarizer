@@ -12,8 +12,8 @@ log = logging.getLogger("uvicorn")
 
 class Settings(BaseSettings):
     environment: str = os.getenv("ENVIRONMENT", "dev")
-    testing: bool = os.getenv("TESTING", 0)
-    database_url: AnyUrl = os.environ.get("DATABASE_URL")
+    testing: int = os.getenv("TESTING", 0)  # type: ignore
+    database_url: AnyUrl = os.environ.get("DATABASE_URL")  # type: ignore
 
     # Authentication settings
     gold_user: str = "admin"

@@ -24,7 +24,7 @@ async def create_summary(
     background_task.add_task(generate_summary, summary_id, payload.url)
 
     response_object = {"id": summary_id, "url": payload.url}
-    return response_object
+    return response_object  # type: ignore
 
 
 @router.get("/{id}/", response_model=SummarySchema)
@@ -49,7 +49,7 @@ async def delete_summary(id: int = Path(..., gt=0)) -> SummaryResponseSchema:
 
     await crud.delete(id)
 
-    return summary
+    return summary  # type: ignore
 
 
 @router.put("/{id}/", response_model=SummarySchema)
